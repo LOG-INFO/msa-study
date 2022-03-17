@@ -1,0 +1,6 @@
+feign:
+  url:
+    product: localhost:8081
+    product-composite: localhost:8082
+    recommendation: localhost:8083
+    review: localhost:8084
