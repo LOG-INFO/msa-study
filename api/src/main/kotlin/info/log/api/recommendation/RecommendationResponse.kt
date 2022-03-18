@@ -1,4 +1,9 @@
 package info.log.api.recommendation
 
-class RecommendationResponse {
-}
+data class RecommendationResponse(
+    val id: Long,
+    val productId: Long,
+    val author: String,
+    val rate: Int,
+    val content: String,
+)

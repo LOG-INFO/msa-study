@@ -1,4 +1,9 @@
 package info.log.api.review
 
-class ReviewResponse {
-}
+data class ReviewResponse(
+    val id: Long,
+    val productId: Long,
+    val author: String,
+    val subject: String,
+    val content: String,
+)
