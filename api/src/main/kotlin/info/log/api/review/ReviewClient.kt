@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(
-    name = "audio-api-client",
+    name = "review-api-client",
     url = "\${feign.url.review}",
 )
 interface ReviewClient {

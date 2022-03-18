@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 
 @FeignClient(
-    name = "audio-api-client",
+    name = "product-api-client",
     url = "\${feign.url.product}",
 )
 interface ProductClient {
