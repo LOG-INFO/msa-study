@@ -70,9 +70,7 @@ subprojects {
         }
 
         dependencies {
-            implementation("io.springfox:springfox-swagger2:3.0.0")
-            implementation("io.springfox:springfox-swagger-ui:3.0.0")
-            implementation("io.springfox:springfox-spring-webflux:3.0.0")
+            implementation("io.springfox:springfox-boot-starter:3.0.0")
         }
 
         jib {
@@ -84,7 +82,7 @@ subprojects {
                 tags = setOf(project.version.toString(), "latest")
                 auth {
                     username = "yhc94"
-                    password = "#end12512"
+                    password = ""
                 }
             }
         }
