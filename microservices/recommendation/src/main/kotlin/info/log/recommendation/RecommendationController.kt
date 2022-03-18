@@ -1,6 +1,9 @@
 package info.log.recommendation
 
 import info.log.api.recommendation.RecommendationResponse
+import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.ApiResponse
+import io.swagger.annotations.ApiResponses
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,15 +15,34 @@ import org.springframework.web.bind.annotation.RestController
 class RecommendationController(
     private val recommendationService: RecommendationService,
 ) {
+
+    @ApiOperation(
+        value = "value",
+        notes = "note"
+    )
+    @ApiResponses(
+        value = [
+            ApiResponse(code = 400, message = "Bad Request, invalid format of the request")
+        ]
+    )
     @GetMapping(value = ["/recommendations/{id}"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getRecommendation(@PathVariable id: Int): ResponseEntity<RecommendationResponse> {
         TODO("not implemented yet")
     }
 
-    @GetMapping("/recommendations")
+    @ApiOperation(
+        value = "value",
+        notes = "note"
+    )
+    @ApiResponses(
+        value = [
+            ApiResponse(code = 400, message = "Bad Request, invalid format of the request")
+        ]
+    )
+    @GetMapping("/recommendations", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getAllRecommendationsByProductId(
         @RequestParam productId: Long,
-    ): ResponseEntity<List<RecommendationResponse>>{
+    ): ResponseEntity<List<RecommendationResponse>> {
         TODO("not implemented yet")
     }
 }

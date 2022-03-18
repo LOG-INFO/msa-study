@@ -5,3 +5,6 @@ spring:
   profiles:
     include:
       - api
+logging:
+  level:
+    root: debug

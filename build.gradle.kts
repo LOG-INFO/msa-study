@@ -9,6 +9,14 @@ plugins {
     kotlin("plugin.jpa") version "1.6.10"
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://repo.spring.io/snapshot")
+        url = uri("https://repo.spring.io/milestone")
+    }
+}
+
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 subprojects {
@@ -52,6 +60,20 @@ subprojects {
 //    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 //    runtimeOnly("com.h2database:h2")
 //    runtimeOnly("mysql:mysql-connector-java")
+    }
+
+    if (this.path.startsWith(":microservices") && this.subprojects.isEmpty()) {
+        repositories {
+            maven {
+                url = uri("https://oss.jfrog.org/artifactory/oss-snapshot-local/")
+            }
+        }
+
+        dependencies {
+            implementation("io.springfox:springfox-swagger2:3.0.0")
+            implementation("io.springfox:springfox-swagger-ui:3.0.0")
+            implementation("io.springfox:springfox-spring-webflux:3.0.0")
+        }
     }
 
     repositories {
