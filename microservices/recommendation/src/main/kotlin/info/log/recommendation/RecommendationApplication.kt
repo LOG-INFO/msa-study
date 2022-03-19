@@ -11,15 +11,13 @@ import springfox.documentation.service.ApiInfo
 import springfox.documentation.service.Contact
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux
 
 @SpringBootApplication
-@EnableSwagger2WebFlux
 @EnableFeignClients(basePackages = ["info.log.api"])
 class RecommendationApplication {
     @Bean
     fun apiDocumentation(): Docket {
-        return Docket(DocumentationType.SWAGGER_2)
+        return Docket(DocumentationType.OAS_30)
             .select()
             .apis(basePackage("info.log.recommendation"))
             .paths(PathSelectors.any())
@@ -31,7 +29,7 @@ class RecommendationApplication {
                     "apiDescription",
                     "apiVersion",
                     "apiTermsOfServiceUrl",
-                    Contact("contactName", "contackUrl", "contactEmail"),
+                    Contact("contactName", "contactUrl", "contactEmail"),
                     "apiLicense",
                     "apiLicenseUrl",
                     emptyList()

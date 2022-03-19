@@ -1,6 +1,21 @@
+spring:
+  config:
+    activate:
+      on-profile: local
 feign:
   url:
     product: localhost:8081
     product-composite: localhost:8082
     recommendation: localhost:8083
     review: localhost:8084
+---
+spring:
+  config:
+    activate:
+      on-profile: real
+feign:
+  url:
+    product: product.real-msa-study.com:8080
+    product-composite: product-composite.msa-study.com:8080
+    recommendation: recommendation.msa-study.com:8080
+    review: review.msa-study.com:8080
