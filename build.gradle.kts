@@ -57,8 +57,9 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
-        // https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+        implementation("org.springframework.cloud:spring-cloud-stream:3.1.2")
+        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.1.2")
+        implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.2")
         implementation("org.springframework.kafka:spring-kafka:2.8.4")
         testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
 

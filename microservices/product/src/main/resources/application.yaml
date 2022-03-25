@@ -5,3 +5,21 @@ spring:
   profiles:
     include:
       - api
+  cloud:
+    function:
+      definition: audioConsumer
+    stream:
+      function:
+        bindings:
+          audioConsumer-in-0: input
+      bindings:
+        input:
+          consumer:
+            maxAttempts: 4 # 메시지 재처리 횟수 (default: 3)
+            backOffInitialInterval: 500
+            backOffMaxInterval: 1000
+      kafka:
+        bindings:
+          input:
+            consumer:
+              enableDlq: true
