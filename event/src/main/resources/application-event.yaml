@@ -1,0 +1,56 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          consumer:
+            maxAttempts: 3 # 메시지 재처리 횟수 (default: 3)
+            backOffInitialInterval: 300
+            backOffMaxInterval: 500
+      kafka:
+        binder:
+          configuration:
+            deafult:
+              key:
+                serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+              value:
+                serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        bindings:
+          input-in-0:
+            consumer:
+              ack-mode: BATCH
+          input:
+            consumer:
+              enableDlq: true
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+feign:
+  url:
+    product: localhost:8081
+    product-composite: localhost:8082
+    recommendation: localhost:8083
+    review: localhost:8084
+---
+spring:
+  config:
+    activate:
+      on-profile: real
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+feign:
+  url:
+    product: product.real-msa-study.com:8080
+    product-composite: product-composite.msa-study.com:8080
+    recommendation: recommendation.msa-study.com:8080
+    review: review.msa-study.com:8080

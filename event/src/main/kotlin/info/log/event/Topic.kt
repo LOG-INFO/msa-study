@@ -1,4 +1,4 @@
-package info.log.product
+package info.log.event
 
 import java.time.LocalDateTime
 

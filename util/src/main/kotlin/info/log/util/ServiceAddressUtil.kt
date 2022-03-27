@@ -1,4 +1,4 @@
-package info.log.event
+package info.log.util
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -9,8 +9,8 @@ import java.net.UnknownHostException
 @Component
 class ServiceAddressUtil(
     @Value("\${server.port}") private val port: String,
-    private var serviceAddress: String? = null,
 ){
+    private var serviceAddress: String? = null
 
     fun getServiceAddress(): String? {
         if (serviceAddress == null) {

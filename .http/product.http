@@ -1,0 +1,17 @@
+### Get Product By ID
+GET http://localhost:8081/products/1
+
+### Get AlProducts
+GET http://localhost:8081/products/1
+
+### Create Product
+POST http://localhost:8081/products
+Content-Type: application/json
+
+{
+  "name": "TEST2",
+  "weight": 1
+}
+
+### Delete Product By ID
+DELETE http://localhost:8081/products/1

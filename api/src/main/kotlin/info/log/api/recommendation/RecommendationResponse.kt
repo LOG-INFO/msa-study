@@ -6,4 +6,5 @@ data class RecommendationResponse(
     val author: String,
     val rate: Int,
     val content: String,
+    val serviceAddress: String?,
 )

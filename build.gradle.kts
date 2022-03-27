@@ -30,7 +30,7 @@ subprojects {
     }
 
     buildscript {
-        val springBootVersion = "2.1.0.RC1"
+        val springBootVersion = "2.6.5"
 
         repositories {
             mavenCentral()
@@ -57,10 +57,8 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        implementation("org.springframework.cloud:spring-cloud-stream:3.1.2")
-        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.1.2")
-        implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.2")
-        implementation("org.springframework.kafka:spring-kafka:2.8.4")
+        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.2.2")
+        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
         implementation(project(":util"))
         testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
 

@@ -6,4 +6,5 @@ data class ReviewResponse(
     val author: String,
     val subject: String,
     val content: String,
+    val serviceAddress: String?,
 )

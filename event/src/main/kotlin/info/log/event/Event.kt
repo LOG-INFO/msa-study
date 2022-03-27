@@ -1,11 +1,9 @@
-package info.log.product
+package info.log.event
 
 import java.time.LocalDateTime
 
-data class Event<K, T>(
+abstract class Event(
     val type: Type,
-    val key: K,
-    val data: T,
     val createdAt: LocalDateTime,
 ) {
     enum class Type {
