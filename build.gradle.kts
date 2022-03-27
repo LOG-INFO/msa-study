@@ -61,6 +61,7 @@ subprojects {
         implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.1.2")
         implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.2")
         implementation("org.springframework.kafka:spring-kafka:2.8.4")
+        implementation(project(":util"))
         testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
 
 //    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
