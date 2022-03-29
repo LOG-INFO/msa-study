@@ -14,4 +14,8 @@ data class Recommendation(
     val author: String,
     val rate: Int,
     val content: String,
-)
+){
+    companion object {
+        const val SEQ_NAME = "recommendations"
+    }
+}

@@ -2,6 +2,8 @@ package info.log.product.presentation
 
 import info.log.api.product.ProductResponse
 import info.log.event.ProductRequest
+import info.log.mongodb_sequence.SequenceRepository
+import info.log.mongodb_sequence.SequenceService
 import info.log.util.ServiceAddressUtil
 import info.log.product.domain.Product
 import info.log.product.service.ProductService
@@ -19,6 +21,7 @@ import java.net.URI
 @RestController
 class ProductController(
     private val productService: ProductService,
+    private val sequenceService: SequenceService,
     private val serviceAddressUtil: ServiceAddressUtil,
 ) {
     @GetMapping(value = ["/products/{id}"], produces = [MediaType.APPLICATION_JSON_VALUE])
@@ -38,6 +41,7 @@ class ProductController(
     @PostMapping(value = ["/products"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun createProduct(@RequestBody request: ProductRequest): Mono<ResponseEntity<ProductResponse>> {
         val product = Product(
+            id = sequenceService.getNewId(Product.SEQ_NAME),
             name = request.name,
             weight = request.weight
         )
