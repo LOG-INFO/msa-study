@@ -20,7 +20,7 @@ class ProductCompositeController(
             id = id,
             name = product.name,
             weight = product.weight,
-            serviceAddress = product.serviceAddress,
+            serviceAddress = product.serviceAddress!!,
             recommendations = recommendations,
             reviews = reviews,
         )

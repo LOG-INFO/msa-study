@@ -26,7 +26,6 @@ subprojects {
         plugin("org.jetbrains.kotlin.plugin.jpa")
         plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
-        plugin("com.google.cloud.tools.jib")
     }
 
     buildscript {
@@ -57,17 +56,24 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.2.2")
-        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
-        implementation(project(":util"))
-        testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
+//        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.2.2")
+//        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
+//        testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
 
 //    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 //    runtimeOnly("com.h2database:h2")
 //    runtimeOnly("mysql:mysql-connector-java")
     }
+    if (!this.path.startsWith(":util")) {
+        dependencies {
+            implementation(project(":util"))
+        }
+    }
 
     if (this.path.startsWith(":microservices") && this.subprojects.isEmpty()) {
+        apply {
+            plugin("com.google.cloud.tools.jib")
+        }
         repositories {
             maven {
                 url = uri("https://oss.jfrog.org/artifactory/oss-snapshot-local/")

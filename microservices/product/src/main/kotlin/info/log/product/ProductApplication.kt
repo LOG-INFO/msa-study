@@ -17,7 +17,7 @@ import springfox.documentation.spring.web.plugins.Docket
 @SpringBootApplication(scanBasePackages = ["info.log.product", "info.log.util"])
 @ComponentScan("info.log.util", "info.log.product", "info.log.mongodb_sequence")
 @EnableFeignClients(basePackages = ["info.log.api"])
-@EnableReactiveMongoRepositories
+@EnableReactiveMongoRepositories(basePackages = ["info.log.product", "info.log.mongodb_sequence"])
 class ProductApplication {
     @Bean
     fun apiDocumentation(): Docket {
