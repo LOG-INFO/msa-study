@@ -22,23 +22,23 @@ spring:
           input:
             consumer:
               enableDlq: true
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: local
-#  cloud:
-#    stream:
-#      kafka:
-#        binder:
-#          brokers: http://kafka-service:9092
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: real
-#  cloud:
-#    stream:
-#      kafka:
-#        binder:
-#          brokers: http://127.0.0.1:9092
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 10.108.226.80:9092
+---
+spring:
+  config:
+    activate:
+      on-profile: real
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 10.108.226.80:9092
