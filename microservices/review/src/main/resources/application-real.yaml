@@ -1,3 +1,12 @@
 logging:
   level:
     root: info
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://mysql:3306/msa_study?serverTimezone=Asia/Seoul
+    username: root
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver

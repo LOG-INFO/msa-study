@@ -1,7 +1,10 @@
+server:
+  port: 8080
+
 logging:
   level:
     root: info
 spring:
   data:
     mongodb:
-      uri: mongodb://adminuser:password123@mongodb:27017/msa-study?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false
+      uri: mongodb://adminuser:password123@10.171.220.85:27017/msa-study?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false

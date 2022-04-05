@@ -1,3 +1,20 @@
+server:
+  port: 8083
+
 logging:
   level:
     root: info
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+  datasource:
+    url: jdbc:mysql://10.171.145.82:3306/msa_study?serverTimezone=Asia/Seoul
+    username: root
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver

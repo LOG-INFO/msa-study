@@ -11,7 +11,7 @@ class ProductService(
     private val productRepository: ProductRepository,
 ) {
 
-    fun create(product: Product): Mono<Product>{
+    fun create(product: Product): Mono<Product> {
         return productRepository.save(product)
             .log()
     }
@@ -24,8 +24,9 @@ class ProductService(
         return productRepository.findAll()
     }
 
-    fun deleteById(id: Long){
-        productRepository.deleteById(id)
+    fun deleteById(id: Long): Mono<Unit> {
+        return productRepository.deleteById(id)
+            .map { }
             .log()
     }
 
