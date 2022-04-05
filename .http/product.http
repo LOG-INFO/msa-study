@@ -1,11 +1,11 @@
 ### Get Product By ID
-GET http://localhost:8080/products/1
+GET http://{product-host}:{product-port}/products/1
 
 ### Get AlProducts
-GET http://localhost:8080/products/1
+GET http://{product-host}:{product-port}/products/1
 
 ### Create Product
-POST http://localhost:8080/products
+POST http://{product-host}:{product-port}/products
 Content-Type: application/json
 
 {
@@ -14,4 +14,4 @@ Content-Type: application/json
 }
 
 ### Delete Product By ID
-DELETE http://localhost:8080/products/1
+DELETE http://{product-host}:{product-port}/products/5
