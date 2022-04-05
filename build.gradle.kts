@@ -56,9 +56,9 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-//        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.2.2")
-//        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
-//        testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
+        implementation("org.springframework.cloud:spring-cloud-function-kotlin:3.2.2")
+        implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka:3.2.2")
+        testImplementation("org.springframework.cloud:spring-cloud-stream-test-support:3.2.2")
 
 //    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 //    runtimeOnly("com.h2database:h2")
@@ -116,5 +116,21 @@ subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
+    }
+}
+
+if (project == rootProject) {
+    tasks.register("jibAll") {
+        for (subproject in subprojects) {
+            if (System.getProperties()["jib.httpTimeout"] == null) {
+                System.getProperties()["jib.httpTimeout"] = "120000"
+            }
+            val jibTask = subproject.tasks.firstOrNull { it.name == "jib" }
+            if (jibTask != null) {
+                dependsOn(jibTask)
+            }
+        }
+        doLast {
+        }
     }
 }
