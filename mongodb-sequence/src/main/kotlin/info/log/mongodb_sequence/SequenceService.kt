@@ -1,21 +1,20 @@
 package info.log.mongodb_sequence
 
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Mono
 
 @Service
-class SequenceService (
+class SequenceService(
     private val sequenceRepository: SequenceRepository,
-        ){
+) {
 
-    fun getNewId(sequenceName: String): Long{
-        val sequence = sequenceRepository.findById(sequenceName).block()
-
-        if(sequence==null){
-            val newId = 1L
-            sequenceRepository.save(Sequence(sequenceName, newId)).block()
-            return newId
-        }
-
-        return sequence.sequence
+    fun getNewId(sequenceName: String): Mono<Long> {
+        return sequenceRepository.findById(sequenceName)
+            .switchIfEmpty(Mono.just(Sequence(sequenceName, 0L)))
+            .flatMap {
+                it.sequence = it.sequence + 1
+                sequenceRepository.save(it)
+            }
+            .map { it.sequence }
     }
 }
