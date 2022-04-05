@@ -89,11 +89,11 @@ subprojects {
                 image = "openjdk:11.0.14.1-jdk-slim-buster"
             }
             to {
-                image = "yhc94/msa-study-${project.name}"
+                image = "${properties["jib.id"]}/msa-study-${project.name}"
                 tags = setOf(project.version.toString(), "latest")
                 auth {
-                    username = "yhc94"
-                    password = ""
+                    username = "${properties["jib.id"]}"
+                    password = "${properties["jib.pw"]}"
                 }
             }
         }
