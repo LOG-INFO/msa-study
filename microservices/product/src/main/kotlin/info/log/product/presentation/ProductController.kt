@@ -22,15 +22,15 @@ class ProductController(
     @GetMapping(value = ["/products/{id}"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getProduct(@PathVariable id: Long): Mono<ResponseEntity<ProductResponse>> {
         val productMono = productService.findById(id)
-        return productMono.log()
-            .map { ResponseEntity.ok(convert(it)) }
+        return productMono.map { ResponseEntity.ok(convert(it)) }
+            .log()
     }
 
     @GetMapping(value = ["/products"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getAllProducts(): Flux<ResponseEntity<ProductResponse>> {
+    fun getAllProducts(): Flux<ProductResponse> {
         val productsFlux = productService.findAll()
-        return productsFlux.log()
-            .map { ResponseEntity.ok(convert(it)) }
+        return productsFlux.map { convert(it) }
+            .log()
     }
 
     @PostMapping(value = ["/products"], produces = [MediaType.APPLICATION_JSON_VALUE])
